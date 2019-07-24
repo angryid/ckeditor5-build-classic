@@ -30,6 +30,12 @@ import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
 import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/base64uploadadapter';
 import Autosave from '@ckeditor/ckeditor5-autosave/src/autosave';
 import PendingActions from '@ckeditor/ckeditor5-core/src/pendingactions';
+import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
+import Highlight from '@ckeditor/ckeditor5-highlight/src/highlight';
+import Underline from '@ckeditor/ckeditor5-basic-styles/src/underline';
+import Strikethrough from '@ckeditor/ckeditor5-basic-styles/src/strikethrough';
+import Code from '@ckeditor/ckeditor5-basic-styles/src/code';
+import Font from '@ckeditor/ckeditor5-font/src/font';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -58,7 +64,13 @@ ClassicEditor.builtinPlugins = [
 	TableToolbar,
 	Base64UploadAdapter,
 	Autosave,
-	PendingActions
+	PendingActions,
+	Alignment,
+	Highlight,
+	Underline,
+	Strikethrough,
+	Code,
+	Font
 ];
 
 // Editor configuration.
@@ -67,8 +79,12 @@ ClassicEditor.defaultConfig = {
 		items: [
 			'heading',
 			'|',
+			'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor',
+			'highlight',
+			'alignment',
 			'bold',
 			'italic',
+			'underline', 'strikethrough', 'code',
 			'link',
 			'bulletedList',
 			'numberedList',

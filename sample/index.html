@@ -27,8 +27,19 @@
 </div>
 
 <script src="https://cdn.staticfile.org/jquery/1.8.1/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
 <script src="../build/ckeditor.js"></script>
 <script>
+	$(function(){
+		//prompt层
+		layer.prompt({title: '请先输入口令，并确认，即可进入相关页面', formType: 1}, function(token, index){
+			layer.close(index);
+			console.log(token)
+			$.post("/",{token:token},function(result){
+				console.log('token'+token);
+			},"json");
+		});
+	})
 	ClassicEditor.create( document.querySelector( '#editor' ), {
 		autosave: {
 			save( editor ) {
@@ -51,7 +62,7 @@
 				console.log( 'Saved', data );
 				$.post("/saveData",{suggest:data},function(result){
 					console.log('save server'+result.messageData);
-				});
+				},"json");
 				resolve();
 			}, 200 );
 		} );

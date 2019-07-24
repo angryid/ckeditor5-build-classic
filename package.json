@@ -90,6 +90,8 @@
   },
   "dependencies": {
     "@ckeditor/ckeditor5-autosave": "^11.0.4",
-	  "@ckeditor/ckeditor5-upload": "latest"
+    "@ckeditor/ckeditor5-font": "^11.2.1",
+    "@ckeditor/ckeditor5-highlight": "^11.0.4",
+    "@ckeditor/ckeditor5-upload": "latest"
   }
 }
