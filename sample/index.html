@@ -26,15 +26,37 @@
 	<p>You can use this sample to validate whether your <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/development/custom-builds.html">custom build</a> works fine.</p>
 </div>
 
+<script src="https://cdn.staticfile.org/jquery/1.8.1/jquery.min.js"></script>
 <script src="../build/ckeditor.js"></script>
 <script>
-	ClassicEditor.create( document.querySelector( '#editor' ) )
+	ClassicEditor.create( document.querySelector( '#editor' ), {
+		autosave: {
+			save( editor ) {
+				return saveData( editor.getData() );
+			}
+		}
+	}  )
 		.then( editor => {
 			window.editor = editor;
 		} )
 		.catch( err => {
 			console.error( err.stack );
 		} );
+
+	// Save the data to a fake HTTP server (emulated here with a setTimeout()).
+	function saveData( data ) {
+		return new Promise( resolve => {
+			setTimeout( () => {
+				Array.from( editor.ui.componentFactory.names() );
+				console.log( 'Saved', data );
+				$.post("/saveData",{suggest:data},function(result){
+					console.log('save server'+result.messageData);
+				});
+				resolve();
+			}, 200 );
+		} );
+	}
+
 </script>
 
 </body>

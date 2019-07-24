@@ -27,6 +27,9 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import PasteFromOffice from '@ckeditor/ckeditor5-paste-from-office/src/pastefromoffice';
 import Table from '@ckeditor/ckeditor5-table/src/table';
 import TableToolbar from '@ckeditor/ckeditor5-table/src/tabletoolbar';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/base64uploadadapter';
+import Autosave from '@ckeditor/ckeditor5-autosave/src/autosave';
+import PendingActions from '@ckeditor/ckeditor5-core/src/pendingactions';
 
 export default class ClassicEditor extends ClassicEditorBase {}
 
@@ -52,7 +55,10 @@ ClassicEditor.builtinPlugins = [
 	Paragraph,
 	PasteFromOffice,
 	Table,
-	TableToolbar
+	TableToolbar,
+	Base64UploadAdapter,
+	Autosave,
+	PendingActions
 ];
 
 // Editor configuration.
@@ -90,5 +96,5 @@ ClassicEditor.defaultConfig = {
 		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
+	language: 'zh-cn'
 };
